@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+header {
+    height: 15vh; 
+    width: 100%;
+    padding: 20px 10px;
+    position: fixed;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header span {
+    font-size: 20px;
+}
+header img {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+header ul {
+    padding-inline-start: 0;
+}
+header li {
+    display: inline;
+    margin-right: 30px;
+}
+header .active {
+    color: blue;
+    text-decoration: underline blue;
+}
+
+main {
+    padding-top: 15vh;
+    width: 60%;
+    margin: 0 auto;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+p {
+    margin-bottom: 25px;
+}
