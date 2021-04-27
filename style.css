@@ -48,3 +48,11 @@ h2 {
 p {
     margin-bottom: 25px;
 }
+
+ol .second-list {
+    margin-left: 20px;
+}
+
+.second-list li {
+    list-style: lower-alpha;
+}

@@ -36,8 +36,8 @@
                 'risposte' => [
                     "Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
                     'lista' => [
-                        'La società consociata Google che offre i servizi, tratta le tue informazioni ed è responsabile del rispetto delle leggi sulla privacy vigenti. Generalmente Google offre i propri servizi per i consumatori tramite una delle due società seguenti:', 
-                        'lista2'=> [
+                        'La società consociata Google che offre i servizi, tratta le tue informazioni ed è responsabile del rispetto delle leggi sulla privacy vigenti. Generalmente Google offre i propri servizi per i consumatori tramite una delle due società seguenti:' => [
+                        
                             "Google Ireland Limited, se gli utenti sono residenti nello Spazio economico europeo (paesi dell'Unione europea, oltre a Islanda, Liechtenstein e Norvegia) o in Svizzera.",
                             "Google LLC, con sede negli Stati Uniti, per il resto del mondo."
                         ],
@@ -62,7 +62,9 @@
             ],
             [
                 'domanda' => "Quando faccio clic sui risultati della Ricerca Google, le mie chiavi di ricerca vengono inviate ai siti web?",
-                'risposte' => "In alcuni casi sì. Quando fai clic su un risultato della Ricerca Google, il tuo browser web potrebbe reindirizzare alla pagina web di destinazione anche l'indirizzo Internet, o URL, della pagina dei risultati di ricerca sotto forma di URL referrer. Talvolta, l'URL della pagina dei risultati di ricerca potrebbe contenere la query di ricerca che hai inserito. Se utilizzi la ricerca SSL (la funzione di ricerca criptata di Google), nella maggior parte dei casi i termini di ricerca non vengono inviati come parte dell'URL negli URL referrer. Questo comportamento può fare eccezione, ad esempio se utilizzi alcuni browser meno diffusi. Ulteriori informazioni sulla ricerca SSL sono disponibili qui. Le query di ricerca o le informazioni contenute nell'URL referrer potrebbero essere disponibili mediante Google Analytics o un'API (Application Programming Interface). Inoltre, gli inserzionisti potrebbero ricevere informazioni relative all' esatte parole chiave che hanno determinato il clic su un annuncio."
+                'risposte' => [ 
+                    "In alcuni casi sì. Quando fai clic su un risultato della Ricerca Google, il tuo browser web potrebbe reindirizzare alla pagina web di destinazione anche l'indirizzo Internet, o URL, della pagina dei risultati di ricerca sotto forma di URL referrer. Talvolta, l'URL della pagina dei risultati di ricerca potrebbe contenere la query di ricerca che hai inserito. Se utilizzi la ricerca SSL (la funzione di ricerca criptata di Google), nella maggior parte dei casi i termini di ricerca non vengono inviati come parte dell'URL negli URL referrer. Questo comportamento può fare eccezione, ad esempio se utilizzi alcuni browser meno diffusi. Ulteriori informazioni sulla ricerca SSL sono disponibili qui. Le query di ricerca o le informazioni contenute nell'URL referrer potrebbero essere disponibili mediante Google Analytics o un'API (Application Programming Interface). Inoltre, gli inserzionisti potrebbero ricevere informazioni relative all' esatte parole chiave che hanno determinato il clic su un annuncio."
+                ]
             ]
         ]
     ?>
@@ -87,12 +89,32 @@
                 <?php foreach($infos as $element){ ?>
                     <h2> <?php echo $element['domanda'] ?></h2>
                     <?php foreach($element['risposte'] as $risposta) { ?>
-                        <?php if($risposta == 'lista') { 
-                            var_dump($risposta);
-                        } ?>
+                        <?php if(is_array($risposta)) { ?>
+                            <ol>
+                                <?php foreach ($risposta as $k => $lista) { ?>
+                                    
+                                    <li>
+                                        <?php if(is_array($lista)) { ?>
+                                            <?php echo $k ?>
+                                            <ol class="second-list">
+                                                <?php foreach ($lista as $lista2) { ?>
+                                                    <li>
+                                                        <?php echo $lista2 ?>
+                                                    </li>
+                                            <?php } ?>
+                                            </ol>
+                                        <?php } else { ?>
+                                <?php echo $lista ?>
+                                <?php } ?>
+                                    </li>
+                               <?php } ?>
+                            </ol>
+                       <?php } else { ?> 
                        <p> <?php echo $risposta ?></p> 
+                        <?php } ?>
                     <?php } ?>
                 <?php } ?>    
+
             </main>
     
 </body>
